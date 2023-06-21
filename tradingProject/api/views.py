@@ -4,6 +4,7 @@ from .serializers import PostSerializer
 from django.http import JsonResponse
 from django.views import View
 from .scripts.basicTestScript import testScript
+from .services import AlpacaApi,YFinanceApi
 
 class PostList(generics.ListCreateAPIView):
     queryset = Post.objects.all()
@@ -19,3 +20,19 @@ class StockDataView(View):
         #    'price': '150.00 USD'
         #}
         return JsonResponse(data, safe=False) 
+    
+
+#This should be in its own file eventually
+
+class accountDataAlpaca(View):
+    def get(self,request,*args,**kwargs):
+        api = AlpacaApi()
+        data = api.get_account_info()
+        #return
+        return JsonResponse(data,safe = False)
+
+class StockDataYFinance(View):
+    def get(self,request,*args,**kwargs):
+        api = YFinanceApi()
+        data = api.get_BTC_Trading_Data()
+        return JsonResponse(data,safe = False)

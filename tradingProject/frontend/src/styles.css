@@ -1,36 +1,73 @@
+/* styles.css */
+
+body {
+  background-color: #ffffff;
+  color: #484848;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
 .App {
-  max-width: 800px;
+  max-width: 900px;
   margin: 0 auto;
-  padding: 20px;
-  font-family: Arial, sans-serif;
+  padding: 10px;
 }
 
 .header {
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
+  font-size: 2.2em;
 }
 
 .title {
-  color: #1e90ff;
-  font-size: 24px;
+  color: #FF5A5F;
 }
 
-.trading-list {
-  list-style: none;
-  padding: 0;
+button {
+  background-color: #FF5A5F;
+  color: #ffffff;
+  border: none;
+  padding: 15px 30px;
+  margin: 20px 0;
+  font-size: 1em;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-.data-key {
-  font-weight: bold;
+button:hover {
+  background-color: #FF2B2E;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+}
+
+.post {
+  border: 1px solid #dddddd;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.post-title {
+  color: #FF5A5F;
+  margin-bottom: 10px;
 }
 
 .nested-list {
-  list-style: none;
   padding-left: 20px;
-  margin-top: 5px;
 }
 
 .nested-key {
-  font-weight: bold;
-  color: #1e90ff;
+  color: #FF5A5F;
+}
+
+.trading-list {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.data-key {
+  color: #FF5A5F;
 }
