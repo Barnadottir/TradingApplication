@@ -8,5 +8,8 @@ venv/
 # Ignore media files
 /media/
 
+#ignore API configuration files for alpaca
+ApiConfig.py
+
 # Ignore database file
 db.sqlite3
