@@ -4,7 +4,7 @@ from .ApiConfig import ALPACA_API_KEY,ALPACA_API_SECRET
 import yfinance as yf
 
 ALPACA_BASE_URL = "https://api.alpaca.markets"
-
+PAPER_BASE_URL = "https://paper-api.alpaca.markets"
 class AlpacaApi():
     
     #set base URL and headers:
@@ -33,4 +33,15 @@ class YFinanceApi():
         data = yf.download(stock_symbol, start=start_date, end=end_date)
         data.index = data.index.strftime('%Y-%m-%d')
         return data.to_dict()
+    
+    def make_trade(self, symbol, shares, side):
+        data = {
+            "symbol": symbol,
+            "qty": shares,
+            "side": side,
+            "type": "market",
+            "time_in_force": "gtc"
+        }
+        response = requests.post(self.BASE_URL + "/v2/orders", json=data, headers=self.headers)
+        return response.json()
             

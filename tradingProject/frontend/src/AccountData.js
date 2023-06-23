@@ -33,8 +33,8 @@ const AccountData = (props) => {
     }
 
     return (
-        <div className="App">
-            <h1 className="header">
+        <div className="account-data">
+            <h1 className="account-data-header">
                 Account Data Page
             </h1>
             {renderData()}

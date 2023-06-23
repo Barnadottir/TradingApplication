@@ -36,3 +36,10 @@ class StockDataYFinance(View):
         api = YFinanceApi()
         data = api.get_BTC_Trading_Data()
         return JsonResponse(data,safe = False)
+
+class MakeTradeView(View):
+    def post(self, request, *args, **kwargs):
+        data = json.loads(request.body)
+        api = AlpacaApi()
+        trade = api.make_trade(data['symbol'], data['shares'], data['side'])
+        return JsonResponse(trade, safe=False)

@@ -1,6 +1,6 @@
 
 import yfinance as yf
-import talib
+#import talib
 import pandas as pd
 import alpaca_trade_api as tradeapi
 
@@ -11,7 +11,7 @@ def testScript():
     return data.to_dict('records')  
 
 
-
+'''
 
 
 # Set up Alpaca API credentials
@@ -112,5 +112,5 @@ for i in range(len(signals)):
        )
        print('Sell signal generated. Selling', shares_to_trade, 'shares of', symbol)
 
-
+'''
 

@@ -1,6 +1,6 @@
 
 
-
+'''
 import yfinance as yf
 import pandas as pd
 import talib
@@ -111,4 +111,4 @@ plt.title('Actual vs. Predicted Values')
 plt.legend()
 plt.show()
 
-"""
+'''

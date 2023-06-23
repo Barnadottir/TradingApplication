@@ -40,8 +40,8 @@ const TradingData = (props) => {
     };
 
     return (
-        <div className="App">
-            <h1 className="header">Trading Data</h1>
+        <div className="trading-data">
+            <h1 className="trading-data-header">Trading Data</h1>
             <ul className="trading-list">{printAllData()}</ul>
         </div>
     );
