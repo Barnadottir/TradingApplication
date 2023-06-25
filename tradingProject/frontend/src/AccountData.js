@@ -24,9 +24,10 @@ const AccountData = (props) => {
         if (!data) return null;
         return (
             <div>
-                <h2>Account id: {data.id}</h2>
+                <p>Account id: {data.id}</p>
                 <p>Equity: {data.equity}</p>
                 <p>Currency: {data.currency}</p>
+                <p>Orders: {data.order}</p>
                 {/* Add more fields as necessary */}
             </div>
         );

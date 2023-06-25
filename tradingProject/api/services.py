@@ -2,23 +2,57 @@
 import requests
 from .ApiConfig import ALPACA_API_KEY,ALPACA_API_SECRET
 import yfinance as yf
+import requests
 
+ALPACA_PAPER_API_KEY = "PKMLXZB07Q2HLNVNYWX1"
+ALPACA_PAPER_API_SECRET = "aBJ7h9rpJHTXBbvrRXlB31uf5biKmCFaZJ7uamtH"
+
+PAPER_BASE_URL = "https://paper-api.alpaca.markets"
 ALPACA_BASE_URL = "https://api.alpaca.markets"
 PAPER_BASE_URL = "https://paper-api.alpaca.markets"
+
+
 class AlpacaApi():
     
     #set base URL and headers:
     
     def __init__(self):
-        self.BASE_URL = ALPACA_BASE_URL
+        '''self.BASE_URL = ALPACA_BASE_URL
         self.headers = {
             "APCA-API-KEY-ID":ALPACA_API_KEY,
             "APCA-API-SECRET-KEY":ALPACA_API_SECRET
+        }'''
+        self.BASE_URL = PAPER_BASE_URL
+        self.headers = {
+            "APCA-API-KEY-ID":ALPACA_PAPER_API_KEY,
+            "APCA-API-SECRET-KEY":ALPACA_PAPER_API_SECRET
         }
     
     def get_account_info(self):
         #should  be returning data about Alpaca account
         response = requests.get(self.BASE_URL + "/v2/account", headers=self.headers)
+        return response.json()
+
+
+
+class AlpacaApiPaper():
+    def __init__(self):
+        self.BASE_URL = PAPER_BASE_URL
+        self.headers = {
+            "APCA-API-KEY-ID":ALPACA_PAPER_API_KEY,
+            "APCA-API-SECRET-KEY":ALPACA_PAPER_API_SECRET
+        }
+
+    def make_trade(self, symbol, shares, side):
+        data = {
+            "symbol": symbol,
+            "qty": shares,
+            "side": side,
+            "type": "market",
+            "time_in_force": "gtc"
+        }
+        response = requests.post(self.BASE_URL + "/v2/orders", json=data, headers=self.headers)
+        print(f'Response = {response}')
         return response.json()
     
 class YFinanceApi():
@@ -34,14 +68,5 @@ class YFinanceApi():
         data.index = data.index.strftime('%Y-%m-%d')
         return data.to_dict()
     
-    def make_trade(self, symbol, shares, side):
-        data = {
-            "symbol": symbol,
-            "qty": shares,
-            "side": side,
-            "type": "market",
-            "time_in_force": "gtc"
-        }
-        response = requests.post(self.BASE_URL + "/v2/orders", json=data, headers=self.headers)
-        return response.json()
+    
             

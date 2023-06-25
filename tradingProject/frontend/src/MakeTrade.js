@@ -1,5 +1,5 @@
 import { useState } from 'react';
-
+import { getCookie} from "./utilities/utils"
 const MakeTrade = () => {
     const [symbol, setSymbol] = useState('');
     const [shares, setShares] = useState(1);
@@ -7,11 +7,13 @@ const MakeTrade = () => {
 
     const makeTrade = (event) => {
         event.preventDefault();  // Prevent the form from refreshing the page
-
+        const csrftoken = getCookie('csrftoken'); // Get CSRF token
+    
         fetch('/api/makeTrade/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                'X-CSRFToken': csrftoken, // Include CSRF token in headers
             },
             body: JSON.stringify({ symbol, shares, side }),
         })
